@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="autoMappingBehavior" value="FULL"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.accp.pojo.User" alias="User" />
+		<typeAlias type="com.accp.pojo.Scenic" alias="Scenic" />
+		<typeAlias type="com.accp.pojo.Comm" alias="Comm" />
+		<typeAlias type="com.accp.pojo.ShopCar" alias="ShopCar" />
+	</typeAliases>
+</configuration>

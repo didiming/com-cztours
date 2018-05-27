@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.CommDao">
+	<select id="getCommList" resultType="Comm">
+		SELECT * FROM comm ORDER BY cId DESC LIMIT #{begin},#{size}
+	</select>
+	
+	<select id="getCommCount" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM comm
+	</select>
+	
+	<insert id="save" parameterType="Scenic">
+		INSERT INTO Comm VALUES(
+			NULL,
+			#{cName},
+			#{cPrice},
+			#{cFreight},
+			#{cDetails},
+			CURRENT_TIMESTAMP());
+	</insert>
+	
+	<select id="getCommById" resultType="Comm" parameterType="java.lang.Integer">
+		SELECT * FROM comm WHERE cId = #{cId}
+	</select>
+	
+	<update id="updateComm" parameterType="Comm">
+		UPDATE comm SET 
+			cName = #{cName},
+			cPrice = #{cPrice},
+			cFreight = #{cFreight},
+			cDetails = #{cDetails}
+		WHERE cId = #{cId}
+	</update>
+	
+	<delete id="deleteCommById" parameterType="java.lang.Integer">
+		DELETE FROM comm WHERE cId = #{cId}
+	</delete>
+	
+	<select id="getMallList" resultType="Comm">
+		SELECT * FROM comm
+	</select>
+</mapper>

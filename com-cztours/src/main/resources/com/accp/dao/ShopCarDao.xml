@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.ShopCarDao">
+	<insert id="save" parameterType="ShopCar">
+		INSERT INTO ShopCar VALUES(
+			NULL,
+			#{sName},
+			#{sPrice},
+			#{sPhoto},
+			CURRENT_TIMESTAMP(),
+			#{uId},
+			#{cId})
+	</insert>
+	
+	<select id="getShopCarById" resultType="ShopCar" parameterType="java.lang.Integer">
+		SELECT * FROM ShopCar WHERE uId = #{uId}
+	</select>
+	
+	<delete id="deleteShopCarById" parameterType="java.lang.Integer">
+		DELETE FROM ShopCar WHERE sId = #{sId}
+	</delete>
+	
+	<select id="getCarById" resultType="ShopCar" parameterType="java.lang.Integer">
+		SELECT * FROM ShopCar WHERE cId = #{cId}
+	</select>
+	
+	<update id="updateShopCar" parameterType="ShopCar">
+		UPDATE ShopCar SET sPrice = sPrice + #{sPrice} WHERE cId = #{cId}
+	</update>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.UserDao">
+	<insert id="save" parameterType="User">
+		INSERT INTO user(uName,uPwd) VALUES(#{uName},#{uPwd})
+	</insert>
+	
+	<select id="getUserByName" parameterType="java.lang.String" resultType="User">
+		SELECT * FROM user WHERE uName = #{uName}
+	</select>
+	
+	<select id="getUser" resultType="User" parameterType="java.lang.Integer">
+		SELECT * FROM user where uId = #{uId}
+	</select>
+	
+	<update id="updateInfo" parameterType="User">
+		UPDATE USER SET 
+			mName = #{mName},
+			mSex = #{mSex},
+			mCity = #{mCity},
+			mDate = #{mDate},
+			mSign = #{mSign} where uId = #{uId}
+	</update>
+	
+	<update id="updateInfoPhoto" parameterType="User">
+		UPDATE USER SET mPhoto = #{mPhoto} where uId = #{uId}
+	</update>
+	
+	<update id="updateInfoSecurity" parameterType="User">
+		UPDATE USER SET uPwd = #{uPwd} where uId = #{uId}
+	</update>
+	
+	<update id="updateIContact" parameterType="User">
+		UPDATE USER SET 
+			iCity = #{iCity},
+			iAddress = #{iAddress},
+			iPhone = #{iPhone},
+			iOffice = #{iOffice},
+			iName = #{iName},
+			iStaus = #{iStaus} where uId = #{uId}
+	</update>
+</mapper>

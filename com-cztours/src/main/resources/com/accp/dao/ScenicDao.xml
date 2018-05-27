@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.ScenicDao">
+	<select id="getScenicList" resultType="Scenic">
+		SELECT * FROM scenic ORDER BY sId DESC LIMIT #{begin},#{size}
+	</select>
+	
+	<select id="getScenicCount" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM scenic
+	</select>
+	
+	<insert id="save" parameterType="Scenic">
+		INSERT INTO scenic VALUES(
+			NULL,
+			#{sName},
+			#{sContent},
+			#{sPhoto},
+			#{sDescribe},
+			CURRENT_TIMESTAMP())
+	</insert>
+	
+	<select id="getScenicById" resultType="Scenic" parameterType="java.lang.Integer">
+		SELECT * FROM scenic WHERE sId = #{sId}
+	</select>
+	
+	<update id="updateScenic" parameterType="Scenic">
+		UPDATE scenic SET 
+			sName = #{sName},
+			sContent = #{sContent},
+			sPhoto = #{sPhoto},
+			sDescribe = #{sDescribe}
+		WHERE sId = #{sId}
+	</update>
+	
+	<delete id="deleteScenicById" parameterType="java.lang.Integer">
+		DELETE FROM scenic WHERE sId = #{sId}
+	</delete>
+	
+	<select id="getList" resultType="Scenic">
+		SELECT * FROM scenic
+	</select>
+</mapper>
